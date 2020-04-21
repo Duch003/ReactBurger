@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Styles from './Layout.module.css';
+
 export interface ILayoutProps {
 
 }
@@ -11,7 +13,7 @@ const layout: React.FunctionComponent<ILayoutProps> = (props) => {
             <div>
                 Toolbar, SideDrawer, Backdrop
             </div>
-            <main>
+            <main className={Styles['Content']}>
                 {props.children}
             </main>
         </React.Fragment>
