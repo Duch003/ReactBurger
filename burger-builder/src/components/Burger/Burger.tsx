@@ -9,7 +9,7 @@ export interface IBurgerProps {
 }
 
 const burger: React.FunctionComponent<IBurgerProps> = props => {
-    const transformedIngridients = Object
+    let transformedIngridients = Object
         .keys(props.ingridients)
         .map(ingridientKey => {
             return [...Array<ReactElement>(props.ingridients[ingridientKey as BurgerIngridientName])]
@@ -17,9 +17,15 @@ const burger: React.FunctionComponent<IBurgerProps> = props => {
                     const output = <BurgerIngridient key={ingridientKey + index} type={ingridientKey as BurgerIngridientName}/>;
                     return output;
                 }
-                    
             );
-        });
+        })
+        .reduce((previousValue, currentElement) => {
+            return previousValue.concat(currentElement);
+        }, []); //[] => starting value
+    
+    if(transformedIngridients.length === 0){
+        transformedIngridients.push(<p key='0'>Please start adding ingridients</p>);
+    }
 
     return (
         <div className={Styles['Burger']}>
