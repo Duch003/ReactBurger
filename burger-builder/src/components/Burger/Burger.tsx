@@ -1,20 +1,20 @@
 import React, { ReactElement } from 'react';
 import Styles from './Burger.module.css';
 import BurgerIngridient, { IBurgerIngridientProps } from './BurgerIngridient/BurgerIngridient';
-import { BurgerIngridientsDictionary } from '../../Types/BurgerIngridientsDictionary';
-import { BurgerIngridientName } from '../../Types/BurgerIngridientName';
+import { BurgerInnerIngridientsDictionary } from '../../Types/BurgerInnerIngridientsDictionary';
+import { BurgerInnerIngridientName } from '../../Types/BurgerInnerIngridientName';
 
 export interface IBurgerProps {
-    ingridients: BurgerIngridientsDictionary
+    ingridients: BurgerInnerIngridientsDictionary
 }
 
 const burger: React.FunctionComponent<IBurgerProps> = props => {
     let transformedIngridients = Object
         .keys(props.ingridients)
         .map(ingridientKey => {
-            return [...Array<ReactElement>(props.ingridients[ingridientKey as BurgerIngridientName])]
+            return [...Array<ReactElement>(props.ingridients[ingridientKey as BurgerInnerIngridientName])]
                 .map((_, index) => {
-                    const output = <BurgerIngridient key={ingridientKey + index} type={ingridientKey as BurgerIngridientName}/>;
+                    const output = <BurgerIngridient key={ingridientKey + index} type={ingridientKey as BurgerInnerIngridientName}/>;
                     return output;
                 }
             );

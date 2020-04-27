@@ -1,0 +1,1 @@
+export type BurgerInnerIngridientName = 'meat' | 'cheese' | 'salad' | 'bacon';
