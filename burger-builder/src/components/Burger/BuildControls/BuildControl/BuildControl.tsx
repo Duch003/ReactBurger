@@ -4,9 +4,11 @@ import { BurgerIngridientName } from '../../../../Types/BurgerIngridientName';
 import { BurgerInnerIngridientName } from '../../../../Types/BurgerInnerIngridientName';
 
 export interface IBuildControlProps {
-    controlLabel: string
+    controlLabel: string,
     type: BurgerInnerIngridientName,
-    added: (ingridientName: BurgerInnerIngridientName) => void
+    added: (ingridientName: BurgerInnerIngridientName) => void,
+    deducted: (ingridientName: BurgerInnerIngridientName) => void,
+    isRemoveDisabled: boolean
 }
 
 const buildControl: React.FunctionComponent<IBuildControlProps> = (props) => {
@@ -14,7 +16,7 @@ const buildControl: React.FunctionComponent<IBuildControlProps> = (props) => {
         <div className={Styles['BuildControl']}>
             <div className={Styles['Label']}>{props.controlLabel}</div>
             <button onClick={() => props.added(props.type)} className={'More'}>More</button>
-            <button className={'Less'}>Less</button>
+            <button disabled={props.isRemoveDisabled} onClick={() => props.deducted(props.type)} className={'Less'}>Less</button>
         </div>
     );
 }
