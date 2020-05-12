@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, PureComponent } from 'react';
 import { BurgerInnerIngridientsDictionary } from '../../../Types/BurgerInnerIngridientsDictionary';
 import { BurgerInnerIngridientName } from '../../../Types/BurgerInnerIngridientName';
 import Button from './../../UI/Button/Button';
@@ -11,14 +11,14 @@ export type OrderSummaryProps = {
 }
 
 const orderSummary: React.FunctionComponent<OrderSummaryProps> = (props) => {
-    
+
     const ingridientSummary = Object.keys(props.ingridients).map((igKey, index) => {
         return (
             <li key={igKey + index}>
-                <span style={{textTransform: 'capitalize'}}>{igKey}</span>: {props.ingridients[igKey as BurgerInnerIngridientName]}
+                <span style={{ textTransform: 'capitalize' }}>{igKey}</span>: {props.ingridients[igKey as BurgerInnerIngridientName]}
             </li>)
     });
-    
+
     return (
         <React.Fragment>
             <h3>Your Order</h3>
@@ -32,6 +32,7 @@ const orderSummary: React.FunctionComponent<OrderSummaryProps> = (props) => {
             <Button buttonType='Success' clicked={props.submitClickHandler}>CONTINUE</Button>
         </React.Fragment>
     );
+
 }
 
 export default orderSummary;

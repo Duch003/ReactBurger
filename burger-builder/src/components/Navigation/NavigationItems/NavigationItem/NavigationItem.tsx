@@ -2,7 +2,6 @@ import React from 'react';
 import Styles from './NavigationItem.module.css';
 
 const navigationItem: React.FunctionComponent<{link: string, active: boolean}> = (props) => {
-    console.log(props.active ? Styles['active'] : undefined);
     return (
         <li className={Styles['NavigationItem']}>
             <a className={props.active ? Styles['active'] : undefined}
