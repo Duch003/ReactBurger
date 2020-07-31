@@ -1,0 +1,8 @@
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.DTOs\bin\Debug\netstandard2.0\BurgerBuilder.DTOs.deps.json
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.DTOs\bin\Debug\netstandard2.0\BurgerBuilder.DTOs.dll
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.DTOs\bin\Debug\netstandard2.0\BurgerBuilder.DTOs.pdb
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.DTOs\obj\Debug\netstandard2.0\BurgerBuilder.DTOs.csprojAssemblyReference.cache
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.DTOs\obj\Debug\netstandard2.0\BurgerBuilder.DTOs.AssemblyInfoInputs.cache
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.DTOs\obj\Debug\netstandard2.0\BurgerBuilder.DTOs.AssemblyInfo.cs
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.DTOs\obj\Debug\netstandard2.0\BurgerBuilder.DTOs.dll
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.DTOs\obj\Debug\netstandard2.0\BurgerBuilder.DTOs.pdb

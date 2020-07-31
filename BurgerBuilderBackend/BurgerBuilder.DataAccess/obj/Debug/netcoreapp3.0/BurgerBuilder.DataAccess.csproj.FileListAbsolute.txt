@@ -1,0 +1,14 @@
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.DataAccess\bin\Debug\netcoreapp3.0\BurgerBuilder.DataAccess.deps.json
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.DataAccess\bin\Debug\netcoreapp3.0\BurgerBuilder.DataAccess.runtimeconfig.json
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.DataAccess\bin\Debug\netcoreapp3.0\BurgerBuilder.DataAccess.runtimeconfig.dev.json
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.DataAccess\bin\Debug\netcoreapp3.0\BurgerBuilder.DataAccess.dll
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.DataAccess\bin\Debug\netcoreapp3.0\BurgerBuilder.DataAccess.pdb
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.DataAccess\bin\Debug\netcoreapp3.0\BurgerBuilder.DTOs.dll
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.DataAccess\bin\Debug\netcoreapp3.0\BurgerBuilder.DTOs.pdb
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.DataAccess\obj\Debug\netcoreapp3.0\BurgerBuilder.DataAccess.csprojAssemblyReference.cache
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.DataAccess\obj\Debug\netcoreapp3.0\BurgerBuilder.DataAccess.AssemblyInfoInputs.cache
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.DataAccess\obj\Debug\netcoreapp3.0\BurgerBuilder.DataAccess.AssemblyInfo.cs
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.DataAccess\obj\Debug\netcoreapp3.0\BurgerBuilder.DataAccess.csproj.CopyComplete
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.DataAccess\obj\Debug\netcoreapp3.0\BurgerBuilder.DataAccess.dll
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.DataAccess\obj\Debug\netcoreapp3.0\BurgerBuilder.DataAccess.pdb
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.DataAccess\obj\Debug\netcoreapp3.0\BurgerBuilder.DataAccess.genruntimeconfig.cache

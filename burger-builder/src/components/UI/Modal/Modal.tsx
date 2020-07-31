@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import Styles from './Modal.module.css';
 import Backdrop from '../Backdrop/Backdrop';
 
@@ -9,13 +9,13 @@ export interface IModalProps {
 
 class Modal extends React.Component<IModalProps> {
 
-    shouldComponentUpdate(nextProps: IModalProps, nextState: {}) {
-        return nextProps.show !== this.props.show;
+    shouldComponentUpdate(nextProps: React.PropsWithChildren<IModalProps>, nextState: {}) {
+        return nextProps.show !== this.props.show || nextProps.children !== this.props.children;
     }
 
-    componentWillUpdate() {
-        console.log('[Modal] componentWillUpdate');
-    }
+    // componentWillUpdate() {
+    //     console.log('[Modal] componentWillUpdate');
+    // }
 
     render(){
         return (

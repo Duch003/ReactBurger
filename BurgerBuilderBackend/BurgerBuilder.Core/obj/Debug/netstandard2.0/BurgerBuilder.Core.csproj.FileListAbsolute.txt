@@ -1,0 +1,13 @@
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.Core\bin\Debug\netstandard2.0\BurgerBuilder.Core.deps.json
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.Core\bin\Debug\netstandard2.0\BurgerBuilder.Core.dll
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.Core\bin\Debug\netstandard2.0\BurgerBuilder.Core.pdb
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.Core\obj\Debug\netstandard2.0\BurgerBuilder.Core.csprojAssemblyReference.cache
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.Core\obj\Debug\netstandard2.0\BurgerBuilder.Core.AssemblyInfoInputs.cache
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.Core\obj\Debug\netstandard2.0\BurgerBuilder.Core.AssemblyInfo.cs
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.Core\obj\Debug\netstandard2.0\BurgerBuilder.Core.dll
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.Core\obj\Debug\netstandard2.0\BurgerBuilder.Core.pdb
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.Core\bin\Debug\netstandard2.0\BurgerBuilder.DataAccess.dll
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.Core\bin\Debug\netstandard2.0\BurgerBuilder.DTOs.dll
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.Core\bin\Debug\netstandard2.0\BurgerBuilder.DataAccess.pdb
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.Core\bin\Debug\netstandard2.0\BurgerBuilder.DTOs.pdb
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.Core\obj\Debug\netstandard2.0\BurgerBuilder.Core.csproj.CopyComplete

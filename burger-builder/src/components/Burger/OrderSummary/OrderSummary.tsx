@@ -1,4 +1,4 @@
-import React, { Component, PureComponent } from 'react';
+import React from 'react';
 import { BurgerInnerIngridientsDictionary } from '../../../Types/BurgerInnerIngridientsDictionary';
 import { BurgerInnerIngridientName } from '../../../Types/BurgerInnerIngridientName';
 import Button from './../../UI/Button/Button';

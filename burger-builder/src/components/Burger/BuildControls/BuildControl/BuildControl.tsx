@@ -1,6 +1,5 @@
 import React from 'react';
 import Styles from './BuildControl.module.css';
-import { BurgerIngridientName } from '../../../../Types/BurgerIngridientName';
 import { BurgerInnerIngridientName } from '../../../../Types/BurgerInnerIngridientName';
 
 export interface IBuildControlProps {

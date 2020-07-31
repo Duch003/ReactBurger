@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import Styles from './Burger.module.css';
-import BurgerIngridient, { IBurgerIngridientProps } from './BurgerIngridient/BurgerIngridient';
+import BurgerIngridient from './BurgerIngridient/BurgerIngridient';
 import { BurgerInnerIngridientsDictionary } from '../../Types/BurgerInnerIngridientsDictionary';
 import { BurgerInnerIngridientName } from '../../Types/BurgerInnerIngridientName';
 
@@ -9,6 +9,7 @@ export interface IBurgerProps {
 }
 
 const burger: React.FunctionComponent<IBurgerProps> = props => {
+    //console.log('Burger: ', props);
     let transformedIngridients = Object
         .keys(props.ingridients)
         .map(ingridientKey => {
@@ -18,6 +19,7 @@ const burger: React.FunctionComponent<IBurgerProps> = props => {
                     return output;
                 }
             );
+            
         })
         .reduce((previousValue, currentElement) => {
             return previousValue.concat(currentElement);

@@ -1,11 +1,11 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 
 import Styles from './Layout.module.css';
 
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 
-class Layout extends PureComponent<{}, {showBackdropInsideSideDrawer: boolean}> {
+class Layout extends Component<{}, {showBackdropInsideSideDrawer: boolean}> {
     
     state = {
         showBackdropInsideSideDrawer: false,
