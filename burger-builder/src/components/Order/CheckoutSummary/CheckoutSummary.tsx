@@ -15,8 +15,8 @@ const checkoutSummary: React.FunctionComponent<ICheckoutSummaryProps> = (props) 
             <div style={{width: '100%', margin: 'auto'}}>
                 <Burger ingridients={props.ingridients}/>
             </div>
-            <Button buttonType="Danger" clicked={props.onCancelClick}>Cancel</Button>
-            <Button buttonType="Success" clicked={props.onSubmitClick}>Continue</Button>
+            <Button buttonType="Danger" disabled={false}  clicked={props.onCancelClick}>Cancel</Button>
+            <Button buttonType="Success" disabled={false}  clicked={props.onSubmitClick}>Continue</Button>
         </div>
     );
 }

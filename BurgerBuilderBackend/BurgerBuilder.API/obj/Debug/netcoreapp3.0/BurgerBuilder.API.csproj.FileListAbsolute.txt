@@ -55,7 +55,6 @@ C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.API
 C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.API\obj\Debug\netcoreapp3.0\BurgerBuilder.API.csprojAssemblyReference.cache
 C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.API\obj\Debug\netcoreapp3.0\staticwebassets\BurgerBuilder.API.StaticWebAssets.Manifest.cache
 C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.API\obj\Debug\netcoreapp3.0\staticwebassets\BurgerBuilder.API.StaticWebAssets.xml
-C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.API\obj\Debug\netcoreapp3.0\BurgerBuilder.API.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.API\obj\Debug\netcoreapp3.0\BurgerBuilder.API.AssemblyInfoInputs.cache
 C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.API\obj\Debug\netcoreapp3.0\BurgerBuilder.API.AssemblyInfo.cs
 C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.API\obj\Debug\netcoreapp3.0\BurgerBuilder.API.RazorTargetAssemblyInfo.cache
@@ -72,3 +71,8 @@ C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.API
 C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.API\bin\Debug\netcoreapp3.0\Newtonsoft.Json.dll
 C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.API\bin\Debug\netcoreapp3.0\Newtonsoft.Json.Bson.dll
 C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.API\obj\Debug\netcoreapp3.0\BurgerBuilder.API.genruntimeconfig.cache
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.API\bin\Debug\netcoreapp3.0\AutoMapper.dll
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.API\bin\Debug\netcoreapp3.0\FluentValidation.dll
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.API\bin\Debug\netcoreapp3.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.API\bin\Debug\netcoreapp3.0\Microsoft.OpenApi.dll
+C:\Users\Duch003\source\repos\ReactBurger\BurgerBuilderBackend\BurgerBuilder.API\bin\Debug\netcoreapp3.0\Swashbuckle.AspNetCore.Swagger.dll

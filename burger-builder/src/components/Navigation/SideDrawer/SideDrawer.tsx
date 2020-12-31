@@ -6,20 +6,19 @@ import BackDrop from './../../UI/Backdrop/Backdrop';
 
 const sideDrawer: React.FunctionComponent<{closed(): void, showBackdrop: boolean}> = (props) => {
 
-    let attachedClasses = [Styles['SideDrawer'], Styles['Close']];
+    let attachedClasses = props.showBackdrop 
+        ? [Styles['SideDrawer'], Styles['Open']] 
+        : [Styles['SideDrawer'], Styles['Close']];
 
-    if(props.showBackdrop) {
-        attachedClasses =  [Styles['SideDrawer'], Styles['Open']];
-    }
     return (
         <React.Fragment>
             <BackDrop show={props.showBackdrop} clicked={props.closed}/>
-            <div className={attachedClasses.join(' ')}>
+            <div className={attachedClasses.join(' ')} onClick={props.closed}>
                 <div className={Styles['Logo']}>
                     <Logo/>
                 </div>
                 <nav>
-                    <NavigationItems/>
+                    <NavigationItems isLoggedIn={false}/>
                 </nav>
             </div>
         </React.Fragment>

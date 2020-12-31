@@ -17,13 +17,13 @@ export interface IBuildControlsProps {
     ordered(): void,
     disabledInfo: BurgerInnerIngridientsMap,
     price: number,
-    purchasable: boolean
+    purchasable: boolean,
+    isLoggedIn: boolean
 }
 
-const buildControls:  React.FunctionComponent<IBuildControlsProps> = (props) => {
+const buildControls: React.FC<IBuildControlsProps> = (props) => {
 
     //const isOrderButtonDisabled = Object.values(props.disabledInfo).every(item => item);
-
     return (
         <div className={Styles['BuildControls']}>
             <p>Current Price: <strong>{props.price.toFixed(2)} zł.</strong></p>
@@ -35,7 +35,11 @@ const buildControls:  React.FunctionComponent<IBuildControlsProps> = (props) => 
                     deducted={props.ingridientDeductedHandler}
                     isRemoveDisabled={props.disabledInfo[control.type]}/>
             )}
-            <button onClick={() => props.ordered()} disabled={!props.purchasable} className={Styles['OrderButton']}>ORDER NOW</button>
+            <button onClick={() => props.ordered()} 
+                disabled={!props.purchasable} 
+                className={Styles['OrderButton']}>
+                    {props.isLoggedIn ? 'ORDER NOW' : 'SIGN UP TO ORDER'}
+            </button>
         </div>
     );
 }

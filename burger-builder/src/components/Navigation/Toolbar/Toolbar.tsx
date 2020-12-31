@@ -4,7 +4,7 @@ import Logo from './../../Logo/Logo';
 import NavigationItems from './../NavigationItems/NavigationItems';
 import DrawerToggle from './../SideDrawer/DrawerToggle/DrawerToggle';
 
-const toolbar: React.FunctionComponent<{drawerToggleClicked(): void}> = (props) => {
+const toolbar: React.FunctionComponent<{drawerToggleClicked(): void, isLoggedIn: boolean}> = (props) => {
     return (
         <header className={Styles['Toolbar']}>
             <DrawerToggle clicked={props.drawerToggleClicked}/>
@@ -12,7 +12,7 @@ const toolbar: React.FunctionComponent<{drawerToggleClicked(): void}> = (props) 
                 <Logo/>
             </div>
             <nav className={Styles['DesktopOnly']}>
-                <NavigationItems/>
+                <NavigationItems isLoggedIn={props.isLoggedIn}/>
             </nav>
             
         </header>

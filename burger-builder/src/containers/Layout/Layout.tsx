@@ -1,12 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import Styles from './Layout.module.css';
 
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
+import { connect } from 'react-redux';
+import { RootState } from '../../reduxSetup';
 
-class Layout extends Component<{}, {showBackdropInsideSideDrawer: boolean}> {
-    
+class Layout extends React.Component<React.PropsWithChildren<Props>, {showBackdropInsideSideDrawer: boolean}> {
+
     state = {
         showBackdropInsideSideDrawer: false,
     }
@@ -27,7 +29,7 @@ class Layout extends Component<{}, {showBackdropInsideSideDrawer: boolean}> {
         return (
             <React.Fragment>
                 <div>
-                    <Toolbar drawerToggleClicked={this.sideDrawerToggleHandler}/>
+                    <Toolbar drawerToggleClicked={this.sideDrawerToggleHandler} isLoggedIn={this.props.isAuthenticated}/>
                     <SideDrawer showBackdrop={this.state.showBackdropInsideSideDrawer} 
                         closed={this.sideDrawerClosedHandler}/>
                 </div>
@@ -40,4 +42,12 @@ class Layout extends Component<{}, {showBackdropInsideSideDrawer: boolean}> {
     
 }
 
-export default Layout;
+const mapStateToProps = (state: RootState) => {
+    return {
+        isAuthenticated: state.authReducer.token !== ''
+    }
+}
+
+type Props = ReturnType<typeof mapStateToProps>;
+
+export default connect(mapStateToProps, null)(Layout);

@@ -13,4 +13,11 @@ export const localInstance = axios.create({
     baseURL: 'https://localhost:44393/burger'
 });
 
+export const authInstance = axios.create({
+    baseURL: 'https://localhost:44393/authentication'
+});
+authInstance.interceptors.response.use((response) => {
+    return response;
+});
+
 export default firebaseInstance;

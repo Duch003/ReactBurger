@@ -2,6 +2,7 @@
 using BurgerBuilder.DataAccess.Interfaces;
 using BurgerBuilder.DTOs.Classes;
 using System;
+using System.Collections.Generic;
 
 namespace BurgerBuilder.Core.Services
 {
@@ -24,6 +25,19 @@ namespace BurgerBuilder.Core.Services
             catch (Exception e)
             {
                 return new Result<Order>(null, e);
+            }
+        }
+
+        public Result<IEnumerable<Order>> GetOrders()
+        {
+            try
+            {
+                var output = _repository.GetOrders();
+                return new Result<IEnumerable<Order>>(output, null);
+            }
+            catch (Exception e)
+            {
+                return new Result<IEnumerable<Order>>(null, e);
             }
         }
     }

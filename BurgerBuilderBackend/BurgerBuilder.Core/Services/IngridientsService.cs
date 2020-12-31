@@ -32,5 +32,22 @@ namespace BurgerBuilder.Core.Services
                 return new Result<Ingridients>(null, e);
             }
         }
+
+        public Result<Prices> GetPrices()
+        {
+            try
+            {
+                var ingridients = _configuration.GetSection("IngridientPrices").Get<Prices>();
+                if (ingridients is null)
+                {
+                    throw new Exception("No prices defined.");
+                }
+                return new Result<Prices>(ingridients);
+            }
+            catch (Exception e)
+            {
+                return new Result<Prices>(null, e);
+            }
+        }
     }
 }

@@ -1,6 +1,6 @@
 import React  from 'react';
 import Modal  from './../../components/UI/Modal/Modal';
-import { AxiosInstance, AxiosRequestConfig, AxiosError } from 'axios';
+import { AxiosInstance, AxiosRequestConfig } from 'axios';
 
 const withErrorHandler = (WrappedComponent: any, axios: AxiosInstance) => {
 

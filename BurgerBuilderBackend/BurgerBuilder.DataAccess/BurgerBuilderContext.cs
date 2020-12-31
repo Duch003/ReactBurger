@@ -1,4 +1,5 @@
 ﻿using BurgerBuilder.DTOs.Classes;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -7,7 +8,7 @@ using System.Text;
 
 namespace BurgerBuilder.DataAccess
 {
-    public class BurgerBuilderContext : DbContext
+    public class BurgerBuilderContext : IdentityDbContext
     {
         public BurgerBuilderContext(DbContextOptions<BurgerBuilderContext> options) : base(options)
         {

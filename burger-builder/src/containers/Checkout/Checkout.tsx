@@ -1,38 +1,16 @@
 import React, { Component } from "react";
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
-import { BurgerInnerIngridientsDictionary } from "../../Types/BurgerInnerIngridientsDictionary";
-import { RouteComponentProps, Route } from "react-router-dom";
+import { RouteComponentProps, Route, Redirect } from "react-router-dom";
 import ContactData from './Contact/ContactData';
+import { connect } from 'react-redux';
+import { INITIAL_INGRIDIENTS } from "../BurgerBuilder/store/BurgerBuilderDefaults";
+import { RootState } from './../../reduxSetup';
 
-class Checkout extends Component<RouteComponentProps, {ingridients: BurgerInnerIngridientsDictionary, totalPrice: number}> {
+class Checkout extends Component<Props> {
 
-    state = {
-        ingridients: {
-            salad: 0,
-            meat: 0,
-            cheese: 0,
-            bacon: 0
-        },
-        totalPrice: 0
-    }
-
-    componentWillMount() {
-        const query = new URLSearchParams(this.props.location.search);
-        const entries = Array.from(query.entries());
-
-        if(entries.length < 1){
-            return;
-        }
-        const ingridientsFromParams: BurgerInnerIngridientsDictionary = {
-            salad: +(entries.find(param => param[0] === 'salad')?.[1] as any),
-            cheese: +(entries.find(param => param[0] === 'cheese')?.[1] as any),
-            bacon: +(entries.find(param => param[0] === 'bacon')?.[1] as any),
-            meat: +(entries.find(param => param[0] === 'meat')?.[1] as any)
-        };
-        const price = +(entries.find(param => param[0] === 'price')?.[1] as any)
-
-        this.setState({ingridients: ingridientsFromParams, totalPrice: price});
-    }
+    // componentDidMount() {
+    //     this.props.onInitPurchase();
+    // }
 
     checkoutCancelledHandler = () => {
         this.props.history.goBack();
@@ -43,19 +21,32 @@ class Checkout extends Component<RouteComponentProps, {ingridients: BurgerInnerI
     }
 
     render() {
-        return (
-            <div>
+        const summary = this.props.ingridients
+        ? (<React.Fragment>
+                {this.props.purchased ? <Redirect to='/'/> : null}
                 <CheckoutSummary 
-                    ingridients={this.state.ingridients}
+                    ingridients={this.props.ingridients}
                     onCancelClick={this.checkoutCancelledHandler}
-                    onSubmitClick={this.checkoutSubmittedHandler}
-                />
+                    onSubmitClick={this.checkoutSubmittedHandler}/>
                 <Route path={this.props.match.path + '/contact-data'} 
-                    render={(props) => (<ContactData ingridients={this.state.ingridients} price={this.state.totalPrice} {...props}/>)}/>
-            </div>
-        );
-    }
+                        component={ContactData}/>
+            </React.Fragment>)
+        : <Redirect to='/'/>
 
+        return summary;
+    }
 }
 
-export default Checkout;
+const mapStateToProps = (state: RootState, ownProps: RouteComponentProps) => {
+    return {
+        ingridients: state.burgerBuilderReducer.ingridients === INITIAL_INGRIDIENTS 
+            ? null 
+            : state.burgerBuilderReducer.ingridients,
+        ...ownProps,
+        purchased: state.contactDataReducer.purchased
+    };
+}
+
+type Props = ReturnType<typeof mapStateToProps>;
+
+export default connect(mapStateToProps, null)(Checkout);

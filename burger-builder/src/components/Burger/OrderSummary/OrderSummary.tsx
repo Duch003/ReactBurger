@@ -3,11 +3,11 @@ import { BurgerInnerIngridientsDictionary } from '../../../Types/BurgerInnerIngr
 import { BurgerInnerIngridientName } from '../../../Types/BurgerInnerIngridientName';
 import Button from './../../UI/Button/Button';
 
-export type OrderSummaryProps = {
+type OrderSummaryProps = {
     ingridients: BurgerInnerIngridientsDictionary,
     cancelClickHandler(): void,
     submitClickHandler(): void,
-    price: number
+    price: number,
 }
 
 const orderSummary: React.FunctionComponent<OrderSummaryProps> = (props) => {
@@ -28,8 +28,8 @@ const orderSummary: React.FunctionComponent<OrderSummaryProps> = (props) => {
             </ul>
             <p><strong>Total Price: {props.price.toFixed(2)} zł.</strong></p>
             <p>Continue to Checkout?</p>
-            <Button buttonType='Danger' clicked={props.cancelClickHandler}>CANCEL</Button>
-            <Button buttonType='Success' clicked={props.submitClickHandler}>CONTINUE</Button>
+            <Button buttonType='Danger' disabled={false} clicked={props.cancelClickHandler}>CANCEL</Button>
+            <Button buttonType='Success' disabled={false}  clicked={props.submitClickHandler}>CONTINUE</Button>
         </React.Fragment>
     );
 

@@ -2,5 +2,6 @@ import { BurgerInnerIngridientsDictionary } from './BurgerInnerIngridientsDictio
 
 export type BurgerIngridientsDictionary = {
     ['bread-top']: number,
-    ['bread-bottom']: number
+    ['bread-bottom']: number,
+    [index: string]: number
 } & BurgerInnerIngridientsDictionary

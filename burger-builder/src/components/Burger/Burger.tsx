@@ -8,8 +8,7 @@ export interface IBurgerProps {
     ingridients: BurgerInnerIngridientsDictionary
 }
 
-const burger: React.FunctionComponent<IBurgerProps> = props => {
-    //console.log('Burger: ', props);
+const burger: React.FC<IBurgerProps> = props => {
     let transformedIngridients = Object
         .keys(props.ingridients)
         .map(ingridientKey => {

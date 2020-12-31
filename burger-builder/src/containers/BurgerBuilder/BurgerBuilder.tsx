@@ -1,4 +1,4 @@
-import React, { PureComponent, Component } from "react";
+import React, { Component } from "react";
 import Burger from "../../components/Burger/Burger";
 import BuildControls from './../../components/Burger/BuildControls/BuildControls';
 import { BurgerInnerIngridientName } from '../../Types/BurgerInnerIngridientName'
@@ -6,89 +6,41 @@ import { BurgerInnerIngridientsDictionary } from './../../Types/BurgerInnerIngri
 import { BurgerInnerIngridientsMap } from './../../Types/BurgerInnerIngridientsMap'
 import Modal from './../../components/UI/Modal/Modal';
 import OrderSummary from './../../components/Burger/OrderSummary/OrderSummary';
-import axios, { localInstance } from '../../axios-orders';
+import { localInstance } from '../../axios-orders';
 import Spinner from './../../components/UI/Spinner/Spinner';
 import withErrorHandler from './../../hoc/withErrorHandler/withErrorHandler';
 import { RouteComponentProps } from "react-router-dom";
-
-export interface IBurgerBuilderProps extends RouteComponentProps {
-
-}
+import { connect } from 'react-redux';
+import * as burgerBuilderActions from './store/BurgerBuilderActionsCreators';
+import { bindActionCreators, Dispatch } from "redux";
+import { RootState } from "../../reduxSetup";
+import * as checkoutActions from '../Checkout/Contact/store/CheckoutActionCreators'
+import { setAuthRedirectPath } from "../Auth/store/AuthActionCreators";
 
 interface IBurgerBuilderState {
-    ingridients: BurgerInnerIngridientsDictionary,
-    totalPrice: number,
-    purchasable: boolean,
     inPurchaseMode: boolean,
-    loading: boolean,
-    ingridientsFetched: boolean,
-    error: Error | null
 }
 
-const INGRIDIENT_PRICES: BurgerInnerIngridientsDictionary = {
-    "bacon": 1,
-    "cheese": 1,
-    "meat": 1.5,
-    "salad": 0.5
-}
 
-class BurgerBuilder extends Component<IBurgerBuilderProps, IBurgerBuilderState> {
+class BurgerBuilder extends Component<Props, IBurgerBuilderState> {
 
     state = {
-        ingridients: {
-            'salad': 0,
-            'bacon': 0,
-            'cheese': 0,
-            'meat': 0
-        },
-        totalPrice: 4,
-        purchasable: false,
         inPurchaseMode: false,
-        loading: false,
-        ingridientsFetched: false,
-        error: null
     }
 
     purchaseHandler = () => {
-        this.setState({ inPurchaseMode: true });
-    }
-
-    addIngridientHandler = (type: BurgerInnerIngridientName) => {
-        const oldCount = this.state.ingridients[type];
-        const updatedCount = oldCount + 1;
-        const updatedIngridients = {
-            ...this.state.ingridients
-        };
-        updatedIngridients[type] = updatedCount;
-        const priceAddition = INGRIDIENT_PRICES[type];
-        const oldPrice = this.state.totalPrice;
-        const newPrice = oldPrice + priceAddition;
-        this.setState({ ingridients: updatedIngridients, totalPrice: newPrice });
-        this.updatePurchaseState(updatedIngridients);
-    }
-
-    updatePurchaseState(ingridients: BurgerInnerIngridientsDictionary) {
-        const sum = Object.values(ingridients)
-            .some(value => value > 0);
-        this.setState({ purchasable: sum });
-    }
-
-    removeIngridientHandler = (type: BurgerInnerIngridientName) => {
-        const oldCount = this.state.ingridients[type];
-        if (oldCount <= 0) {
-            alert("You don't have any " + type + " in your burger!");
-            return;
+        if(this.props.isLoggedIn) {
+            this.setState({ inPurchaseMode: true })
+        } else {
+            this.props.onSetAuthRedirectPath('/checkout');
+            this.props.history.push('/auth');
         }
-        const updatedCount = oldCount - 1;
-        const updatedIngridients = {
-            ...this.state.ingridients
-        };
-        updatedIngridients[type] = updatedCount;
-        const priceDeduction = INGRIDIENT_PRICES[type];
-        const oldPrice = this.state.totalPrice;
-        const newPrice = oldPrice - priceDeduction;
-        this.setState({ ingridients: updatedIngridients, totalPrice: newPrice });
-        this.updatePurchaseState(updatedIngridients);
+    }
+
+    isPurchasable(ingridients: BurgerInnerIngridientsDictionary): boolean {
+        const output = Object.values(ingridients)
+            .some(value => value > 0);
+        return output;
     }
 
     purchaseCancelHandler = () => {
@@ -96,46 +48,18 @@ class BurgerBuilder extends Component<IBurgerBuilderProps, IBurgerBuilderState> 
     }
 
     purchaseContinueHandler = () => {
-        //alert('Continue!');
-        
-        const queryParams = [];
-        for(let ingridient of Object.entries(this.state.ingridients)) {
-            queryParams.push(encodeURIComponent(ingridient[0]) + '=' + encodeURIComponent(ingridient[1]))
-        }
-        queryParams.push('price=' + this.state.totalPrice);
-        this.props.history.push({
-            pathname: '/checkout',
-            search: '?' + queryParams.join('&')
-        });
+        this.props.onInitPurchase();
+        this.props.history.push('/checkout');
     }
 
     componentDidMount() {
-        // axios.get('https://react-my-burger-5403f.firebaseio.com/ingridients.json')
-        //     .then(response => {
-        //         this.setState({ ingridients: response.data, ingridientsFetched: true });
-        //     }).catch(error => {
-        //         this.setState({error: error});
-        //     });
-        console.log(this.props)
-        localInstance.get('initialingridients')
-            .then(response => {
-                const mappedData = response.data as BurgerInnerIngridientsDictionary;
-
-                let newTotal = mappedData.bacon * INGRIDIENT_PRICES.bacon 
-                    + mappedData.cheese * INGRIDIENT_PRICES.cheese
-                    + mappedData.salad * INGRIDIENT_PRICES.salad
-                    + mappedData.meat * INGRIDIENT_PRICES.meat;
-
-                this.setState({ ingridients: response.data, ingridientsFetched: true, totalPrice: newTotal});
-                this.updatePurchaseState(mappedData) 
-            }).catch(error => {
-                this.setState({error: error});
-            });
+        this.props.onInitIngridients();
+        this.props.onInitPrices();
     }
 
     render() {
         const disabledInfo = {
-            ...this.state.ingridients
+            ...this.props.burgerBuilderReducer.ingridients
         };
 
         const map: BurgerInnerIngridientsMap = {
@@ -153,29 +77,27 @@ class BurgerBuilder extends Component<IBurgerBuilderProps, IBurgerBuilderState> 
             map[name] = disabledInfo[name] <= 0;
         });
 
-        const modalContent = this.state.loading 
-            ? (<Spinner/>) 
-            : (<OrderSummary cancelClickHandler={this.purchaseCancelHandler}
-                submitClickHandler={this.purchaseContinueHandler}
-                ingridients={this.state.ingridients}
-                price={this.state.totalPrice} />);
+        const modalContent = (<OrderSummary cancelClickHandler={this.purchaseCancelHandler}
+            submitClickHandler={this.purchaseContinueHandler}
+            ingridients={this.props.burgerBuilderReducer.ingridients}
+            price={this.props.burgerBuilderReducer.totalPrice} />);
 
-        let burger = this.state.error ? <p>Ingridient's can't be loaded.</p> : <Spinner/>;
-        if(this.state.ingridientsFetched){
+        let burger = this.props.burgerBuilderReducer.pricesFetchError || this.props.burgerBuilderReducer.ingridientsFetchError ? <p>Ingridients can't be loaded.</p> : <Spinner/>;
+        if(!this.props.burgerBuilderReducer.ingridientsFetchError && !this.props.burgerBuilderReducer.pricesFetchError){
             burger = (
                 <React.Fragment>
-                    <Burger ingridients={this.state.ingridients} />
+                    <Burger ingridients={this.props.burgerBuilderReducer.ingridients} />
                     <BuildControls
-                        price={this.state.totalPrice}
-                        ingrideintAddedHandler={this.addIngridientHandler}
-                        ingridientDeductedHandler={this.removeIngridientHandler}
+                        isLoggedIn={this.props.isLoggedIn}
+                        price={this.props.burgerBuilderReducer.totalPrice}
+                        ingrideintAddedHandler={this.props.onIngridientAdded}
+                        ingridientDeductedHandler={this.props.onIngridientRemoved}
                         disabledInfo={map}
                         ordered={this.purchaseHandler}
-                        purchasable={this.state.purchasable} />
+                        purchasable={this.isPurchasable(this.props.burgerBuilderReducer.ingridients)} />
                 </React.Fragment>
             );
         };
-       
 
         return (
             <React.Fragment>
@@ -188,4 +110,27 @@ class BurgerBuilder extends Component<IBurgerBuilderProps, IBurgerBuilderState> 
     }
 }
 
-export default withErrorHandler(BurgerBuilder, localInstance);
+const mapStateToProps = (state: RootState, ownProps: RouteComponentProps) => {
+    return {
+        ...state,
+        ...ownProps,
+        isLoggedIn: state.authReducer.token !== ''
+    }
+}
+
+type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>;
+
+const mapDispatchToProps = (dispatch: Dispatch) =>
+    bindActionCreators({
+        onIngridientAdded: (name: BurgerInnerIngridientName) => burgerBuilderActions.addIngridient(name),
+        onIngridientRemoved: (name: BurgerInnerIngridientName) => burgerBuilderActions.removeIngridient(name),
+        setPrices: (prices: BurgerInnerIngridientsDictionary) => burgerBuilderActions.setPriceTable(prices),
+        setBasicIngridients: (ingridients: BurgerInnerIngridientsDictionary) => burgerBuilderActions.setBasicIngridients(ingridients),
+        computeTotalPrice: () => burgerBuilderActions.computeTotalPrice(),
+        onInitIngridients: () => burgerBuilderActions.initBasicIngridients(),
+        onInitPrices: () => burgerBuilderActions.initPriceTable(),
+        onInitPurchase: () => checkoutActions.purchaseInit(),
+        onSetAuthRedirectPath: (path: string) => setAuthRedirectPath(path)
+    }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(BurgerBuilder, localInstance));

@@ -1,11 +1,17 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import Styles from './NavigationItem.module.css';
 
-const navigationItem: React.FunctionComponent<{link: string, active: boolean}> = (props) => {
+export interface INavigationItemProps {
+    link: string,
+    active: boolean,
+    exact: boolean
+}
+
+const navigationItem: React.FunctionComponent<INavigationItemProps> = (props) => {
     return (
         <li className={Styles['NavigationItem']}>
-            <a className={props.active ? Styles['active'] : undefined}
-            href={props.link}>{props.children}</a>
+            <NavLink activeClassName={Styles['active']} exact={props.exact} to={props.link}>{props.children}</NavLink>
         </li>
     );
 }
